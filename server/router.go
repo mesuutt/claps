@@ -13,7 +13,8 @@ func NewRouter() *gin.Engine {
 	v1 := router.Group("v1")
 	{
 		claps := new(controllers.ClapsController)
-		v1.POST("/add", claps.Add)
+		v1.POST("/claps/add", claps.Add)
+		v1.POST("/claps/count", claps.Count)
 	}
 
 	return router

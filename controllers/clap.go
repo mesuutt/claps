@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"github.com/mesuutt/claps/utils"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -23,7 +24,12 @@ func (o ClapsController) Add(c *gin.Context) {
 		return
 	}
 
-	err = clap.Create()
+	if utils.IsRequestURL(clap.PageURL) == false {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "page_url is not a valid URL"})
+		return
+	}
+
+	err = clap.Increase()
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "Clap failure"})
@@ -31,4 +37,21 @@ func (o ClapsController) Add(c *gin.Context) {
 	}
 
 	c.Writer.WriteHeader(http.StatusOK)
+}
+
+func (o ClapsController) Count(c *gin.Context) {
+	var clap models.Clap
+
+	err := c.Bind(&clap)
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Invalid JSON"})
+		return
+	}
+
+	clap.Get()
+	msg := make(map[string]uint)
+	msg["count"] = clap.Count
+
+	c.JSON(http.StatusOK, msg)
 }

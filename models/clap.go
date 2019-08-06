@@ -14,7 +14,7 @@ type Clap struct {
 }
 
 // Create using for save new clap
-func (claps *Clap) Create() error {
+func (clap *Clap) Increase() error {
 	conn := db.GetDB()
 	tx := conn.Begin()
 	defer func() {
@@ -27,10 +27,23 @@ func (claps *Clap) Create() error {
 		return err
 	}
 
-	if err := tx.Create(claps).Error; err != nil {
-		tx.Rollback()
-		return err
+	tx = tx.Set("gorm:query_option", "FOR UPDATE")
+	if err := tx.Where("page_url=?", clap.PageURL).First(clap).Error; err != nil {
+		clap.Count = 1
+		if err := tx.Create(clap).Error; err != nil {
+			tx.Rollback()
+			return err
+		}
+	} else {
+		clap.Count = clap.Count +1
+		tx.Save(clap)
 	}
 
 	return tx.Commit().Error
+}
+
+// Create using for save new clap
+func (clap *Clap) Get() {
+	conn := db.GetDB()
+	conn.Where("page_url=?", clap.PageURL).First(clap)
 }
