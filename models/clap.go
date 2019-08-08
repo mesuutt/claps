@@ -5,12 +5,11 @@ import (
 	"github.com/mesuutt/claps/db"
 )
 
-
 // Clap is behaviour objects of clap service
 type Clap struct {
 	gorm.Model
 	PageURL string `json:"page_url" binding:"required", gorm:"type:text;unique_index"`
-	Count  uint
+	Count   uint
 }
 
 // Create using for save new clap
@@ -35,7 +34,7 @@ func (clap *Clap) Increase() error {
 			return err
 		}
 	} else {
-		clap.Count = clap.Count +1
+		clap.Count = clap.Count + 1
 		tx.Save(clap)
 	}
 
