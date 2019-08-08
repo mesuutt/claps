@@ -1,6 +1,7 @@
 package server
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/mesuutt/claps/controllers"
 )
@@ -9,6 +10,7 @@ func NewRouter() *gin.Engine {
 	router := gin.New()
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
+	router.Use(cors.Default()) // Allow all origins
 
 	v1 := router.Group("v1")
 	{

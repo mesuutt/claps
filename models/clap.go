@@ -42,7 +42,7 @@ func (clap *Clap) Increase() error {
 	return tx.Commit().Error
 }
 
-// Create using for save new clap
+// Get clap from db
 func (clap *Clap) Get() {
 	conn := db.GetDB()
 	conn.Where("page_url=?", clap.PageURL).First(clap)
