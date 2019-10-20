@@ -7,7 +7,7 @@
             return (count >= R.options.minLikeToShowCount) ? count: '';
         },
         init: (options) => {
-            options.apiURL = options.apiURL || 'http://claps.test:9000/v1';
+            options.apiURL = options.apiURL || 'http://reactions.mesuutt.com/api/v1';
             options.viewOnly = !!options.viewOnly;
             options.likedBtnClass = options.likedBtnClass? options.likedBtnClass : 'liked';
 

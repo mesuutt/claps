@@ -18,7 +18,7 @@ func NewRouter() *gin.Engine {
 
 	router.Use(static.Serve("/assets", static.LocalFile(config.GetString("asset_path"), false)))
 
-	v1 := router.Group("v1")
+	v1 := router.Group("api/v1")
 	{
 		claps := new(controllers.ClapsController)
 		v1.POST("/claps/add", claps.Add)
