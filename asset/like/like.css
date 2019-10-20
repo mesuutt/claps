@@ -1,0 +1,86 @@
+div.reaction-btn {
+    /*
+    display: block;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.3rem;
+    font-family: Raleway,Helvetica Neue,Helvetica,sans-serif;
+    transition: padding-left .1s;
+    border-top: .2rem solid #92c4d1;
+    text-align: center;
+    transition: background .1s;
+    */
+    font-weight: 700;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    background: transparent;
+
+    cursor: pointer;
+    user-select: none;
+}
+
+div.reaction-btn {
+    border-color: #ee7567;
+    color: #ee7567;
+}
+
+div.reaction-btn:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 1rem;
+    background: url("data:image/svg+xml;charset=utf8,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 100 100' width='100px' height='100px' preserveAspectRatio='defer' shape-rendering='geometricPrecision'%3E%3Cg fill='%23acd3eb'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M85.5,14.7C61.4,3.3,50,28.5,50,28.5S38.6,3.3,14.5,14.7 C-9.2,25.8-5.5,64.2,50,93C105.5,64.2,109.2,25.8,85.5,14.7z'/%3E%3C/g%3E%3C/svg%3E") 50% no-repeat;
+    background-size: contain;
+    animation: jiggle 2s ease-in;
+}
+
+div.reaction-btn:not(.liked):before {
+    animation: heartbeat .5s ease-out infinite alternate;
+}
+
+
+
+/* LIKED */
+
+div.reaction-btn.liked {
+    color: #ae1f23;
+    border-color: #ae1f23;
+}
+
+div.reaction-btn.liked:before {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 100 100' width='100px' height='100px' preserveAspectRatio='defer' shape-rendering='geometricPrecision'%3E%3Cg fill='%23ae1f23'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M85.5,14.7C61.4,3.3,50,28.5,50,28.5S38.6,3.3,14.5,14.7 C-9.2,25.8-5.5,64.2,50,93C105.5,64.2,109.2,25.8,85.5,14.7z'/%3E%3C/g%3E%3C/svg%3E")
+}
+
+
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1)
+    }
+
+    to {
+        transform: scale(1.15)
+    }
+}
+
+@keyframes jiggle {
+    5%,25% {
+        transform: scale(1)
+    }
+
+    10% {
+        transform: scale(1.1,.9)
+    }
+
+    15% {
+        transform: scale(.9,1.1) translateY(-5px)
+    }
+
+    20% {
+        transform: scale(1) translateY(-5px)
+    }
+}
+

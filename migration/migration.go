@@ -11,4 +11,5 @@ func Migrate() {
 	conn := db.GetDB()
 	fmt.Println("Migrations running")
 	conn.AutoMigrate(models.Clap{})
+	conn.AutoMigrate(models.Like{})
 }

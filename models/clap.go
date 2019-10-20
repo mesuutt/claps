@@ -8,7 +8,8 @@ import (
 // Clap is behaviour objects of clap service
 type Clap struct {
 	gorm.Model
-	PageURL string `json:"page_url" binding:"required", gorm:"type:text;unique_index"`
+	PageURL string `json:"page_url", gorm:"type:text;unique_index"`
+	Identifier string `json:"identifier", gorm:"type:varchar(50);`
 	Count   uint
 }
 
