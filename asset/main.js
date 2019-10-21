@@ -22,7 +22,7 @@
             R.options = options;
 
             if (R.options.loadCSS) {
-                R.loadCSS("http://claps.test:9000/assets/like/like.css").then(function(){
+                R.loadCSS("https://reactions.mesuutt.com/assets/like/like.css").then(function(){
                     if (R.options.loadUmbrealla){
                         R.loadJS("https://cdnjs.cloudflare.com/ajax/libs/umbrella/3.1.0/umbrella.min.js").then(R.run)
                     } else {
