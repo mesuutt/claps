@@ -179,8 +179,8 @@
             minLikeToShowCount: 1,
             // loadCSS: true,
             countFormatter: function (count) {
-                console.log('M111');
-                if (count) return count + " likes";
+                if (count == 1) return count + " like";
+                if (count > 1) return count + " likes";
             },
 
             /*
